@@ -1,6 +1,6 @@
 CREATE TABLE area
 (
-  areaID VARCHAR(3) NOT NULL,
+  areaID NUMERIC(3) NOT NULL,
   areaName VARCHAR(20) NOT NULL,
   PRIMARY KEY (areaID)
 );
@@ -8,7 +8,7 @@ CREATE TABLE area
 CREATE TABLE city
 (
   cityName VARCHAR(20) NOT NULL,
-  areaID VARCHAR(3) NOT NULL,
+  areaID NUMERIC(3) NOT NULL,
   PRIMARY KEY (cityName),
   FOREIGN KEY (areaID) REFERENCES area(areaID)
 );
@@ -21,13 +21,15 @@ CREATE TABLE agent
   HireYear NUMERIC(4) NOT NULL,
   bossID NUMERIC(9) NOT NULL,
   sallary FLOAT NOT NULL,
-  PRIMARY KEY (agentID)
+  areaID NUMERIC(3) NOT NULL,
+  PRIMARY KEY (agentID),
+  FOREIGN KEY (areaID) REFERENCES area(areaID)
 );
 
 CREATE TABLE client
 (
   clientName VARCHAR(20) NOT NULL,
-  phoneNr VARCHAR(10) NOT NULL,
+  phoneNr NUMERIC(10) NOT NULL,
   Address VARCHAR(25) NOT NULL,
   clientID NUMERIC(9) NOT NULL,
   cityName VARCHAR(20) NOT NULL,
